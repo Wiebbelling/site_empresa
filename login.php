@@ -1,4 +1,12 @@
-
+<?php 
+session_start();
+session_name("adm");
+if(isset($_SESSION['validacao']))
+	if($_SESSION['validacao'] == 1)
+	{
+		header("Location: modelo_padrao.php?codigo_modelo=0");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +47,7 @@
       <form class="form-signin" method="post" action="login2.php">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Usuario</label>
-        <input type="email" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
+        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
         <label for="inputPassword" class="sr-only">Senha</label>
         <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
         <div class="checkbox">

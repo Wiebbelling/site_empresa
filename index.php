@@ -1,4 +1,5 @@
 
+
 <?php
 include "banco.php";
 
@@ -44,39 +45,7 @@ $banco->cria_paginas();
   <body>
   
   <!-- NAVBAR ================================================== -->
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.php">DragonflyDrones
-              </a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mídias<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="imagens.php">Iamgens</a></li>
-                    <li><a href="videos.php">Vídeos</a></li>
-                  </ul>
-                </li>
-                <li><a href="login.php">Adm</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-
+    <?php include "menu_principal.html" ?>
 
     <!-- Carousel ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -91,9 +60,9 @@ $banco->cria_paginas();
           <img class="first-slide" src="img/cidade.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>CIDADE</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1><!-- Titulo --></h1>
+              <p><!-- texto --></p>
+<!--              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
             </div>
           </div>
         </div>
@@ -101,19 +70,19 @@ $banco->cria_paginas();
           <img class="second-slide" src="img/quad.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>FISL 15</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <h1><!-- Titulo --></h1>
+              <p><!-- texto --></p>
+              <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>-->
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+          <img class="third-slide" src="img/guaiba1.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <h1><!-- Titulo --></h1>
+              <p><!-- texto --></p>
+              <!--<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
             </div>
           </div>
         </div>
@@ -137,22 +106,22 @@ $banco->cria_paginas();
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="img/logo.png" alt="Generic placeholder image" width="140" height="140">
           <h2>DragonFly Drones</h2>
           <p>A Dragonfly Drones é uma Start Up especializada em serviços com Drones criada em novembro de 2015. Conheça abaixo nossos serviços!</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+         <!-- <p><a class="btn btn-default" href="#" role="button">Saiba mais &raquo;</a></p>-->
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Equipamentos</h2>
-          <p>Quer saber sobre nossos equipamentos? Dê uma olhada neles aqui!</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <img class="img-circle" src="img/asa1.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>Serviços</h2>
+          <p>Quer conhecer nossos serviços? Dê uma olhada neles aqui!</p>
+          <p><a class="btn btn-default" href="imagens.php" role="button">Saiba Mais &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="img/quad1.jpg" alt="Generic placeholder image" width="140" height="140">
           <h2>Sobre Nós</h2>
           <p>Quem somos: Uma equipe multidisciplinar, simpática e aficionada por tecnologias e inovação.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="sobre_nos.php" role="button">Saiba Mais &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
@@ -168,7 +137,7 @@ $banco->cria_paginas();
           <p class="lead">Para ter a melhor recordação do seu evento com uma perspectiva acima das convencionais, entre em contato. Filmamos seu evento e editamos da melhor maneira para que as recordações se tornem inesquecíveis!</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="img/evento.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="img/evento.jpg" alt="Generic placeholder image" width="500" height="500">
         </div>
       </div>
 
@@ -180,7 +149,7 @@ $banco->cria_paginas();
           <p class="lead">Imagem aérea de uma fazenda ou casa? Fotos de um empreendimento ou construção? Quer mostrar para seu cliente como será a vista do apartamento do prédio que está sendo levantado? Conseguimos a melhor imagem para você!</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" src="img/construtora.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="img/construtora.jpg" alt="Generic placeholder image" width="500" height="500">
         </div>
       </div>
 
@@ -192,7 +161,7 @@ $banco->cria_paginas();
           <p class="lead">Ajudamos você a montar um drone que melhor se adeque às suas necessidades. Projetamos, montamos e te ensinamos a pilotar.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" src="img/projeto.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="img/projeto.jpg" alt="Generic placeholder image" width="500" height="500">
         </div>
       </div>
 
@@ -204,7 +173,7 @@ $banco->cria_paginas();
           <p class="lead">Atualmente estamos montando o curso “Montando meu próprio Drone” que em breve estará disponível. Se precisar de palestras, demonstrações já podemos fazer. Entre em contato!</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" src="img/palestra.jpg" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="img/palestra.jpg" alt="Generic placeholder image" width="500" height="500">
         </div>
       </div>
 
@@ -214,12 +183,7 @@ $banco->cria_paginas();
 
 
       <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Topo</a></p>
-        <p>&copy; 2015 DragonFly Drones, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        <p>Fale Conosco: contato@dragonflydrones.com.br</p>
-        <p>Para Suporte: suporte@dragonflydrones.com.br</p>
-      </footer>
+      <?php include "rodape.html" ?>
 
     </div><!-- /.container -->
 

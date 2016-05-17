@@ -21,8 +21,8 @@ class Banco
 	function conectar($banco)
 	{
 		global $con;
-		$con = mysqli_connect("mysql.hostinger.com.br","u580826224_admin","123456","u580826224_df") or die ("erro".mysqli_error($con));
-		//$con = mysqli_connect("localhost","root","","df") or die ("erro".mysqli_error($con));
+		//$con = mysqli_connect("mysql.hostinger.com.br","u580826224_admin","123456","u580826224_df") or die ("erro".mysqli_error($con));
+		$con = mysqli_connect("localhost","root","","df") or die ("erro".mysqli_error($con));
 		return $con;
 	}
 	
@@ -30,7 +30,7 @@ class Banco
 	{	
 		global $con;
 		
-		$total = 0;
+		$total_dolar = 0;
 		$dolar_americano = "http://dolarhoje.com/cotacao.txt";
 		$conteudo = AbreDolarAmericano( $dolar_americano );
 		$conteudo =  str_replace(",",".",$conteudo);
@@ -68,9 +68,9 @@ class Banco
 			echo "<td><a href='deleta_relacao.php?codigo_modelo=$codigo_orcamento&codigo_peca=$codigo_peca'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a></td>";
 			echo "<td><a href='altera_peca.php?codigo_modelo=$codigo_orcamento&codigo_peca=$codigo_peca'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
 			echo "<tr>";
-			$total = $total + $valor_peca_brl;
+			$total_dolar = $total_dolar + (int)$quantidade * $valor_unitario_usd;
 		}
-		return $total;
+		return (float)$total_dolar;
 	}
 	
 	function consulta_pecas_geral()
@@ -239,7 +239,7 @@ class Banco
 			if($tipo_midia == 0)
   				echo "			<video class='embed-responsive-item' src='img/$nome_arquivo_midia' controls='controls'></video>";
 			else
-				echo "			<img src='img/$nome_arquivo_midia' alt='Generic placeholder image' class='img-rounded'>";
+				echo "			<img src='img/$nome_arquivo_midia' alt='Generic placeholder image' height='200' width='350' class='img-rounded'>";
 			
 			echo "		</div>";
       		echo "		<div class='caption'>";

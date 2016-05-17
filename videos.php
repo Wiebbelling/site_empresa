@@ -42,38 +42,8 @@ $banco->conectar("df");
 
   <body>
 
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.php">DragonflyDrones
-              </a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mídias<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="imagens.php">Iamgens</a></li>
-                    <li><a href="videos.php">Vídeos</a></li>
-                  </ul>
-                </li>
-                <li><a href="login.php">Adm</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
+    <!-- NAVBAR ================================================== -->
+    <?php include "menu_principal.html" ?>
     
     <div class="page-header">
   		<center><h1>Videos: <small>Conheça nosso trabalho</small></h1></center>
@@ -82,16 +52,11 @@ $banco->conectar("df");
 <?php
 $banco->carrega_midia(0);
 ?>
-</div>
+
     
     <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Topo</a></p>
-        <p>&copy; 2015 DragonFly Drones, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        <p>Fale Conosco: contato@dragonflydrones.com.br</p>
-        <p>Para Suporte: suporte@dragonflydrones.com.br</p>
-      </footer>
-
+      <?php include "rodape.html" ?>
+</div> <!-- Container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

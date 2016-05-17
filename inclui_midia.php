@@ -86,18 +86,43 @@ $banco->conectar("df");
       <div class="form-group">
     	<label for="tipo_midia" class="col-sm-2 control-label">Tipo de Mídia:</label>
     	  <div class="col-sm-10">
-      		<input type="text" name="tipo_midia" class="form-control" id="tipo_midia" placeholder="Tipo da Mídia">
+      		<select name="tipo_midia" class="form-control" id="tipo_midia" >
+            	<option value="1">Imagens</option>
+                <option value="0">Vídeos</option>
+            </select>
     	  </div>
   	  </div>
-      <!-- Imput File-->
+      
       <div class="form-group">
     	<label for="midia" class="col-sm-2 control-label">Mídia:</label>
-        	<div class="col-sm-10">
-    			<input type="file" id="midia" name="midia">
-                <p class="help-block">Selecione uma mídia</p>
-  	  		</div>
-            
-      </div>
+          <div class="col-sm-5">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="radio" aria-label="..." name="formato_midia" id="link_radio"  value="link">
+              </span>
+              <input type="text" class="form-control" aria-label="..." name="link_text" id="link_text">
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-5">
+              <div class="col-sm-1">
+                <div class="input-group">	
+                  <span class="input-group">
+                   <input type="radio" name="formato_midia" id="midia_radio" value="arquivo">
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+         
+          
+              <div class="col-sm-11">
+                <div class="input-group">	
+                  <span class="input-group">
+                  <input type="file" id="midia" name="midia">
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            </div>
+		</div>
+      
        <!--Botão-->
       <div class="form-group">
          <div class="col-sm-offset-2 col-sm-10">

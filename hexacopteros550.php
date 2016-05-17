@@ -1,8 +1,15 @@
 <?php
 include "banco.php";
+//include "conversao.php";
 $codigo_modelo = $_GET['codigo_modelo'];
 $banco = new Banco;
 $banco->conectar("df");
+
+$dolar_americano = "http://dolarhoje.com/cotacao.txt";
+$valor_dolar = AbreDolarAmericano( $dolar_americano );
+$valor_dolar =  str_replace(",",".",$valor_dolar);
+$valor_dolar = (float)$valor_dolar;
+
 ?>
 
 <!DOCTYPE html>
@@ -59,19 +66,7 @@ $banco->conectar("df");
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
-            <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                  	<li class="dropdown-header">Inclusão</li>
-                    <li><a href="inclui_modelo.php">Incluir Modelo</a></li>
-                    <li><a href="inclui_peca.php">Incluir Peça</a></li>
-                    <li><a href="inclui_relacao.php">Incluir Relação</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Exclusão</li>
-                    <li><a href="exclui_relacao.php">Excluir Relação</a></li>
-                    <li><a href="exclui_peca.php">Excluir Peça</a></li>
-                  </ul>
-                </li>
+            	<?php include "menu.html"; ?>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -116,19 +111,37 @@ $banco->conectar("df");
               </thead>
               <tbody>
                 <?php
-				$total = $banco->consulta_pecas($codigo_modelo);
+				$total_dolar = $banco->consulta_pecas($codigo_modelo);
 				?>
               </tbody>
             </table>
           </div>
-          <?php echo "Total R$: $total <br>";
-		  $total_geral = $total + 2000;
-		  //$total_geral = number_format($total_geral,2);
-		  $total_imposto = $total_geral + ($total_geral*0.1);
-		  //$total_imposto = number_format($total_imposto,2);
-		  $total_final = $total_imposto *1.25;
-		  //$total_final= number_format($total_final,2);
-		  echo "Peças + Básico R$: $total_geral <br>Total Imposto R$: $total_imposto <br>Orçamento Final R$: $total_final";
+          <?php
+		  $total_dolar = number_format($total_dolar,2);
+		  
+		  $total_brl = $total_dolar*($valor_dolar + 0.35);
+		  $total_imposto = $total_brl * 1.1;
+		  $total_final = $total_imposto*1.30;
+		  $total_nota_fiscal = $total_final*0.1514;
+		  $lucro = $total_final - ($total_imposto + $total_nota_fiscal);
+		  $total_brl= number_format($total_brl,2);
+		  $total_imposto= number_format($total_imposto,2);
+		  $total_nota_fiscal= number_format($total_nota_fiscal,2);
+		  $total_final= number_format($total_final,2);
+		  $lucro= number_format($lucro,2);
+		  
+		  echo "
+		  
+		  <font color='#FF9933'><h3 align='right'> Orçamento Final R$: $total_final	</h3></font>
+		  <font color='#FF9933'><h3 align='right'> Lucro final: $lucro </h3></font>
+		  <p align='center'>
+		  <font size='4'>Dados Extras:</font><br>
+		  Valor do Dolar $:$valor_dolar 
+		  Peças em Dolar $: $total_dolar 
+		  Peças em Reais R$: $total_brl 			
+		  Total com Imposto R$: $total_imposto 			
+		  Valor da nota fiscal R$: $total_nota_fiscal	
+		  </p>";
 		  ?>
         </div>
       </div>
