@@ -26,6 +26,19 @@ class Banco
 		return $con;
 	}
 	
+	function login($usuario, $senha)
+	{
+		global $con;
+		$query ="SELECT senha FROM usuarios WHERE usuario = '$usuario'";
+		$resultado = mysqli_query($con,$query) or die("erro de consulta".mysqli_error($con));
+		$linha=mysqli_fetch_assoc($resultado);
+		$senha_banco = $linha['senha'];
+		if($senha == $senha_banco)
+			return 1;
+		else
+			return 0;
+	}
+	
 	function consulta_pecas($codigo_orcamento)
 	{	
 		global $con;
@@ -81,14 +94,12 @@ class Banco
 		$conteudo =  str_replace(",",".",$conteudo);
 		$conteudo = (float)$conteudo;
 		
-		$query = "SELECT* FROM pecas JOIN orcamento_peca ON  pecas.codigo_peca = orcamento_peca.codigo_peca";
+		$query = "SELECT* FROM pecas";
 		$resultado = mysqli_query($con,$query) or die("erro de consulta das peças ".mysqli_error($con));
 		while($linha=mysqli_fetch_assoc($resultado))
 		{
-			$codigo_relacao = $linha['id'];
 			$codigo_peca = $linha['codigo_peca'];
 			$nome_peca = $linha['nome_peca'];
-			$quantidade = $linha['quantidade'];
 			$valor_unitario_usd = $linha['valor_unitario_usd'];
 			$link = $linha['link'];
 			
@@ -96,7 +107,6 @@ class Banco
 			echo "<tr>";
 			echo "<td>$codigo_peca</td>";
 			echo "<td>$nome_peca</td>";
-			echo "<td>$quantidade</td>";
 			$valor_unitario_usd_format = number_format($valor_unitario_usd,2);
 			$valor_unitario_usd_format = str_replace(".",",",$valor_unitario_usd_format);
 			echo "<td>$: $valor_unitario_usd_format</td>";
@@ -104,10 +114,6 @@ class Banco
 			$valor_unitario_brl_format = number_format($valor_unitario_brl,2);
 			$valor_unitario_brl_format = str_replace(".",",",$valor_unitario_brl_format);
 			echo "<td>R$: $valor_unitario_brl_format</td>";
-			$valor_peca_brl = (int)$quantidade * $valor_unitario_brl;
-			$valor_peca_brl_format = number_format($valor_peca_brl,2);
-			$valor_peca_brl_format = str_replace(".",",",$valor_peca_brl_format);
-			echo "<td>R$: $valor_peca_brl_format</td>";
 			echo "<td><a href=$link>Link</a></td>";
 			echo "<td><a href='deleta_peca.php?codigo_peca=$codigo_peca'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a></td>";
 			echo "<td><a href='altera_peca.php?codigo_modelo=0&codigo_peca=$codigo_peca'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
@@ -132,9 +138,9 @@ class Banco
 			{
 				echo "<li>";
 			}
-			$link = strtolower ( $nome_orcamento );
-			$link = str_replace(" ","",$link);
-			$link .= ".php";
+			//$link = strtolower ( $nome_orcamento );
+			//$link = str_replace(" ","",$link);
+			$link = "modelo_padrao.php";
 			$link .= "?codigo_modelo=$codigo_orcamento";
 			echo "<a href=$link>";
 			echo "$nome_orcamento";
@@ -237,10 +243,9 @@ class Banco
       		echo "		<div class='embed-responsive embed-responsive-16by9'>";
 			
 			if($tipo_midia == 0)
-  				echo "			<video class='embed-responsive-item' src='img/$nome_arquivo_midia' controls='controls'></video>";
+  			echo "			<video class='embed-responsive-item' src='img/$nome_arquivo_midia' controls='controls'></video>";
 			else
-				echo "			<img src='img/$nome_arquivo_midia' alt='Generic placeholder image' height='200' width='350' class='img-rounded'>";
-			
+			echo "			<img src='img/$nome_arquivo_midia' alt='Generic placeholder image' height='200' width='350' class='img-rounded'>";
 			echo "		</div>";
       		echo "		<div class='caption'>";
             echo "       	<h3>$titulo</h3>";
@@ -279,7 +284,6 @@ class Banco
 		{
 			$codigo_orçamento = (int)$linha['codigo_orcamento'];
 			$nome_orcamento = $linha['nome_modelo'];
-			
 			$nome_orcamento = strtolower ( $nome_orcamento );
 			$nome_orcamento = str_replace(" ","",$nome_orcamento);
 			$nome_orcamento .= ".php";
@@ -295,7 +299,7 @@ class Banco
 		global $con;
 		$query = "SELECT* FROM orcamentos WHERE codigo_orcamento = $codigo_modelo";
 		$resultado = mysqli_query($con,$query) or die("erro de consulta".mysqli_error($con));
-		$linha=mysql_fetch_assoc($resultado);
+		$linha = mysqli_fetch_assoc($resultado);
 		$nome_modelo = $linha['nome_modelo'];
 		$nome_modelo = strtolower ($nome_modelo);
 		$nome_modelo = str_replace(" ","",$nome_modelo);

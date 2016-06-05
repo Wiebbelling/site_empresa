@@ -24,10 +24,10 @@ $valor_dolar = (float)$valor_dolar;
     <link rel="icon" href="img/favicon.ico">
 
     <title>
-    <?php 
-		$nome_modelo = $banco->consulta_nome_modelo($codigo_modelo);
-		echo "$nome_modelo";
-	?>
+		<?php 
+            $nome_modelo = $banco->consulta_nome_modelo($codigo_modelo);
+            echo "$nome_modelo";
+        ?>
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -65,9 +65,9 @@ $valor_dolar = (float)$valor_dolar;
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
-            	<?php include "menu.html"; ?>
-          </ul>
+    		<li><a href="modelo_padrao.php?codigo_modelo=0">Orçamentos</a></li>
+           	<?php include "menu.html"; ?>
+		  </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>
@@ -116,12 +116,10 @@ $valor_dolar = (float)$valor_dolar;
               </tbody>
             </table>
           </div>
-          <?php
-		  $total_dolar = number_format($total_dolar,2);
-		  
+          <?php	  
 		  $total_brl = $total_dolar*($valor_dolar + 0.35);
 		  $total_imposto = $total_brl * 1.1;
-		  $total_final = $total_imposto*1.30;
+		  $total_final = $total_imposto * 1.30;
 		  $total_nota_fiscal = $total_final*0.1514;
 		  $lucro = $total_final - ($total_imposto + $total_nota_fiscal);
 		  $total_brl= number_format($total_brl,2);
@@ -129,6 +127,7 @@ $valor_dolar = (float)$valor_dolar;
 		  $total_nota_fiscal= number_format($total_nota_fiscal,2);
 		  $total_final= number_format($total_final,2);
 		  $lucro= number_format($lucro,2);
+		  $total_dolar = number_format($total_dolar,2);
 		  
 		  echo "
 		  

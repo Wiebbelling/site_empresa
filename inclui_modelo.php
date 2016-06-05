@@ -2,8 +2,16 @@
 include "banco.php";
 $banco = new Banco;
 $banco->conectar("df");
-?>
 
+if(isset($_POST['nome_modelo']))
+{
+	$nome_modelo = $_POST['nome_modelo'];
+	$banco->conectar("df");
+	$banco->inclui_modelo($nome_modelo);
+}
+
+//header ("Location: index.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,10 +59,9 @@ $banco->conectar("df");
           <a class="navbar-brand" href="index.php">DragonFly Drones</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
+          
             <?php include "menu.html"; ?>
-          </ul>
+      
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>
@@ -67,7 +74,7 @@ $banco->conectar("df");
     <div class="col-md-6">
     <h2 class="sub-header"><center>Inclusão de Modelos:</center></h2>
     
-    <form class="form-horizontal" method="post" action="executa_inclusao.php">
+    <form class="form-horizontal" method="post" action="">
   	  <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Nome do Modelo</label>
     	  <div class="col-sm-10">

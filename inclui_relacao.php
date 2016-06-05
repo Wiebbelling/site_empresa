@@ -2,6 +2,16 @@
 include "banco.php";
 $banco = new Banco;
 $banco->conectar("df");
+
+if(isset($_POST['codigo_peca']) && isset($_POST['codigo_modelo']) && isset($_POST['quantidade']))
+{
+	$codigo_peca = $_POST['codigo_peca'];
+	$codigo_modelo = (int)$_POST['codigo_modelo'];
+	$quantidade = (int)$_POST['quantidade'];
+	$banco->conectar("df");
+	$banco->inclui_relacao($codigo_modelo, $codigo_peca,$quantidade);
+	//header ("Location: inclui_relacao.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +61,9 @@ $banco->conectar("df");
           <a class="navbar-brand" href="index.php">DragonFly Drones</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
+          
             <?php include "menu.html"; ?>
-          </ul>
+          
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>
@@ -67,7 +76,7 @@ $banco->conectar("df");
     <div class="col-md-6">
     <h2 class="sub-header"><center>Inclusão de Relações:</center></h2>
     
-    <form class="form-horizontal" method="post" action="executa_inclusao_relacao.php">
+    <form class="form-horizontal" method="post" action="">
       <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Código da Peça:</label>
     	  <div class="col-sm-10">

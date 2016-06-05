@@ -24,10 +24,10 @@ $valor_dolar = (float)$valor_dolar;
     <link rel="icon" href="img/favicon.ico">
 
     <title>
-    <?php 
-		$nome_modelo = $banco->consulta_nome_modelo($codigo_modelo);
-		echo "$nome_modelo";
-	?>
+		<?php 
+            $nome_modelo = $banco->consulta_nome_modelo($codigo_modelo);
+            echo "$nome_modelo";
+        ?>
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -65,9 +65,9 @@ $valor_dolar = (float)$valor_dolar;
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
-            	<?php include "menu.html"; ?>
-          </ul>
+    		<li><a href="modelo_padrao.php?codigo_modelo=0">Orçamentos</a></li>
+           	<?php include "menu.html"; ?>
+		  </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>

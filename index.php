@@ -5,7 +5,7 @@ include "banco.php";
 
 $banco = new Banco;
 $banco->conectar("df");
-$banco->cria_paginas();
+//$banco->cria_paginas();
 ?>
 
 

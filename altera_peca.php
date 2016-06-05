@@ -2,8 +2,22 @@
 include "banco.php";
 $banco = new Banco;
 $banco->conectar("df");
-$codigo_modelo = $_GET['codigo_modelo'];
-$codigo_peca = $_GET['codigo_peca'];
+if(isset($_GET['codigo_modelo']))
+	$codigo_modelo = $_GET['codigo_modelo'];
+if(isset($_GET['codigo_peca']))
+	$codigo_peca = $_GET['codigo_peca'];
+
+if(isset($_POST['nome_peca_form']) && isset($_POST['valor_form']) && isset($_POST['link_form']))
+{
+	$nome_peca = $_POST['nome_peca_form'];
+	$valor_usd = (float)str_replace(",",".",$_POST['valor_form']);
+	$link = $_POST['link_form'];
+	
+	$banco->conectar("df");
+	$banco->altera_peca($codigo_peca,$nome_peca,$valor_usd,$link);
+	
+	//header("Location: exclui_peca.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,29 +90,29 @@ $codigo_peca = $_GET['codigo_peca'];
 	?>
     <div class="col-md-6">
     <h2 class="sub-header"><center>Alteração de Peças:</center></h2>
-   <form class="form-horizontal" method="post" action="executa_altera_peca.php<?php echo"?codigo_modelo=$codigo_modelo&codigo_peca=$codigo_peca" ?>">
+   <form class="form-horizontal" method="post" action="">
   	  <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Codigo da Peça:</label>
     	  <div class="col-sm-10">
-      		<input type="text" name="codigo_peca" class="form-control" id="inputEmail3" value="<?php echo "$codigo_peca"; ?>" disabled>
+      		<input type="text" name="codigo_peca_form" class="form-control" id="inputEmail3" value="<?php echo "$codigo_peca"; ?>" disabled>
     	  </div>
   	  </div>
       <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Nome da Peça:</label>
     	  <div class="col-sm-10">
-      		<input type="text" name="nome_peca" class="form-control" id="inputEmail3" value="<?php echo "$nome_peca"; ?>" >
+      		<input type="text" name="nome_peca_form" class="form-control" id="inputEmail3" value="<?php echo "$nome_peca"; ?>" >
     	  </div>
   	  </div>
       <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Valor em USD:</label>
     	  <div class="col-sm-10">
-      		<input type="text" name="valor" class="form-control" id="inputEmail3" placeholder="Valor em $" value="<?php echo "$valor_usd"; ?>">
+      		<input type="text" name="valor_form" class="form-control" id="inputEmail3" placeholder="Valor em $" value="<?php echo "$valor_usd"; ?>">
     	  </div>
   	  </div>
       <div class="form-group">
     	<label for="inputEmail3" class="col-sm-2 control-label">Link da Peça:</label>
     	  <div class="col-sm-10">
-      		<input type="text" name="link" class="form-control" id="inputEmail3" placeholder="link da peca" value="<?php echo "$link"; ?>">
+      		<input type="text" name="link_form" class="form-control" id="inputEmail3" placeholder="link da peca" value="<?php echo "$link"; ?>">
     	  </div>
   	  </div>
       <div class="form-group">

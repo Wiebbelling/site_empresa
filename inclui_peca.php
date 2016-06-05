@@ -1,8 +1,21 @@
 <?php
-$return = $_GET['return'];
+$return = 0;
+if(isset($_GET['return']))
+	$return = $_GET['return'];
+	
 include "banco.php";
 $banco = new Banco;
 $banco->conectar("df");
+if(isset($_POST['nome_peca']) && isset($_POST['valor']) && isset($_POST['link']))
+{
+	$nome_peca = $_POST['nome_peca'];
+	$valor_usd = (float)str_replace(",",".",$_POST['valor']);
+	$link = $_POST['link'];
+	 
+	$banco->conectar("df");
+	$return = $banco->inclui_peca($nome_peca,$valor_usd,$link);
+	//header ("Location: inclui_peca.php?return=$return");
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +66,7 @@ $banco->conectar("df");
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
+            <li><a href="modelo_padrao.php?codigo_modelo=0">Orçamentos</a></li>
             <?php include "menu.html"; ?>
           </ul>
           <form class="navbar-form navbar-right">

@@ -1,11 +1,32 @@
 <?php 
+include "banco.php";
+$banco = new Banco();
+$banco->conectar("df");
+
 session_start();
 session_name("adm");
 if(isset($_SESSION['validacao']))
 	if($_SESSION['validacao'] == 1)
 	{
-		header("Location: modelo_padrao.php?codigo_modelo=0");
+		//header("Location: modelo_padrao.php?codigo_modelo=0");
 	}
+
+
+if(isset($_POST['usuario']) && isset($_POST['senha']))
+{
+	$usuario = $_POST['usuario'];
+	$senha = $_POST['senha'];
+	
+	if($banco->login($usuario,$senha))
+	{
+		session_start();
+		session_name("adm");
+		$_SESSION['validacao'] = 1;
+		header ("Location: exclui_peca.php");
+	}
+	else
+		header ("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +65,7 @@ if(isset($_SESSION['validacao']))
 
     <div class="container">
 
-      <form class="form-signin" method="post" action="login2.php">
+      <form class="form-signin" method="post" action="">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Usuario</label>
         <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>

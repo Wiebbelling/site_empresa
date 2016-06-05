@@ -53,10 +53,7 @@ $banco->conectar("df");
           <a class="navbar-brand" href="index.php">DragonFly Drones</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="quadricopterof450.php?codigo_modelo=1">Orçamentos</a></li>
             <?php include "menu.html"; ?>
-          </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
           </form>
@@ -76,10 +73,8 @@ $banco->conectar("df");
                 <tr>
                   <th>#</th>
                   <th>Peça</th>
-                  <th>Quantidade</th>
                   <th>Valor Unitário(USD)</th>
                   <th>Valor Unitário(BRL)</th>
-                  <th>Valor da Peça(BRL)</th>
                   <th>Link</th>
                   <th></th>
                   <th></th>
