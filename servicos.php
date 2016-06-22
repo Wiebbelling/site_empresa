@@ -19,7 +19,6 @@
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron-narrow.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -33,44 +32,41 @@
   </head>
 
   <body>
-
-   <?php include "menu_principal.html"?>
-
-      <div class="jumbotron">
-        <h1>Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <header id="header_wrapper">
+      <div class="container">
+        <div class="header_box">
+          <div class="logo"><a href="#"><img src="img/logo.png" alt="logo"></a></div>
+          <div class="flags"><img src="img/Flag USA_BR.jpg" alt="USA and Brazil" title="USA and Brazil" /></div>
+          <nav class="navbar navbar-inverse" role="navigation">
+          <div class="navbar-header">
+            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <div id="main-nav" class="collapse navbar-collapse navStyle">
+                <ul class="nav navbar-nav" id="mainNav">
+                  <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
+                  <li><a href="#aboutUs" class="scroll-link">Sobre nós</a></li>
+                  <li><a href="#service" class="scroll-link">Serviços</a></li>
+                  <li><a href="#Portfolio" class="scroll-link">Portfólio</a></li>
+            <li><a href="#clients" class="scroll-link">Clientes</a></li>
+                  <li><a href="#team" class="scroll-link">Equipe</a></li>
+                  <li><a href="#contact" class="scroll-link">Contato</a></li>
+                </ul>
+          </div>
+         </nav>
         </div>
       </div>
+    </header>
+   <?php //include "menu_principal.html"?>
+   </div>
+	<div class="container">  
+	  
+	  
+	  
+	  <?php include "rodape.html" ?>
 
-      <?php include "rodape.php" ?>
-
-    </div> <!-- /container -->
 
 
+	</div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
